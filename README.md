@@ -10,4 +10,4 @@ The new code can later be modified to suit the project, by using the viewmodels 
 
 The project is still in progress.
 
-if you need more information concerning my code or the way its written kindly reach out to me on my email: unclevelo@gmail.com.
+
