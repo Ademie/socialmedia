@@ -12,6 +12,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../utils/color_res.dart';
 import '../feed_screen/feed_screen.dart';
+import '../live_stream_application_screen/live_stream_application_screen.dart';
 
 class LiveGridScreen extends StatefulWidget {
   const LiveGridScreen({Key? key}) : super(key: key);
@@ -59,11 +60,11 @@ class _LiveGridScreenState extends State<LiveGridScreen> {
                 const Spacer(),
                 InkWell(
                   onTap: () {
-                    // Navigator.push(context, MaterialPageRoute(
-                    //   builder: (context) {
-                    //     return const UploadFeed();
-                    //   },
-                    // ));
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return const LiveStreamApplicationScreen();
+                      },
+                    ));
                   },
                   child: Container(
                     decoration: BoxDecoration(
