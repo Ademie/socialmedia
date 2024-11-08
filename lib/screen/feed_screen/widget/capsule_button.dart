@@ -22,7 +22,7 @@ class CapsuleButton extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 4),
         decoration: BoxDecoration(
           color: isSelected ? const Color(0xFF5271FF) : const Color(0xFFDCE2FF),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(10),
         ),
         child: Text(
           text,

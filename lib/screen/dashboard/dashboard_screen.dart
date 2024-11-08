@@ -9,6 +9,9 @@ import 'package:orange_ui/screen/randoms_screen/randoms_screen.dart';
 import 'package:orange_ui/utils/color_res.dart';
 import 'package:stacked/stacked.dart';
 
+import '../live_grid_screen/live_grid_screen.dart';
+import '../livestream_dashboard_screen/livestream_dashboard_screen.dart';
+
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
 
@@ -34,10 +37,14 @@ class DashboardScreen extends StatelessWidget {
                 : model.pageIndex == 1
                     ? const RandomsScreen()
                     : model.pageIndex == 2
+                        // newly revamped
                         ? const FeedScreen()
                         : model.pageIndex == 3
-                            ? const MessageScreen()
-                            : const ProfileScreen(),
+                            // newly revamped
+                            ? const LiveGridScreen()
+                            : model.pageIndex == 4
+                                ? const MessageScreen()
+                                : const ProfileScreen(),
           ),
         );
       },
