@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:orange_ui/common/common_ui.dart';
 import 'package:orange_ui/model/chat_and_live_stream/chat.dart';
@@ -35,77 +36,74 @@ class ChatTopBarArea extends StatelessWidget {
             child: Row(
               children: [
                 InkWell(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Image.asset(
-                    AssetRes.backArrow,
-                    height: 30,
-                    width: 30,
-                  ),
-                ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: SvgPicture.asset('assets/icons/new/arrow_back.svg')),
                 const SizedBox(width: 15),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: CachedNetworkImage(
                     imageUrl: '${conversation?.user?.image}',
                     cacheKey: '${conversation?.user?.image}',
-                    height: 37,
-                    width: 37,
+                    height: 40,
+                    width: 40,
                     fit: BoxFit.cover,
                     errorWidget: (context, url, error) {
-                      return CommonUI.profileImagePlaceHolder(
-                          name: conversation?.user?.username, heightWidth: 37);
+                      return Image.asset('assets/images/new/userdp.png');
                     },
                   ),
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 12),
                 Expanded(
                   child: InkWell(
                     onTap: onUserTap,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Text(
-                              conversation?.user?.username != null
-                                  ? '${conversation?.user?.username} '.capitalize ?? ''
-                                  : ' ',
-                              style: const TextStyle(
-                                color: ColorRes.darkGrey,
-                                fontSize: 16,
-                                fontFamily: FontRes.bold,
-                              ),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            Text(
-                              conversation?.user?.age != null ? "${conversation?.user?.age}" : '',
-                              style: const TextStyle(
-                                color: ColorRes.darkGrey,
-                                fontSize: 16,
-                              ),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(width: 5),
-                            Visibility(
-                                visible: conversation != null &&
-                                    conversation?.user != null &&
-                                    conversation?.user?.isHost != null &&
-                                    conversation!.user!.isHost!,
-                                child: Image.asset(AssetRes.tickMark, height: 15, width: 15)),
-                          ],
-                        ),
                         Text(
-                          conversation?.user?.city != null ? "${conversation?.user?.city}" : '',
+                          conversation?.user?.username != null
+                              ? '${conversation?.user?.username} '.capitalize ??
+                                  'No name'
+                              : ' ',
                           style: const TextStyle(
-                            color: ColorRes.darkGrey9,
-                            fontSize: 13,
+                            color: Color(0xFF17181C),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                            fontFamily: FontRes.bold,
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: 4),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: const Color(0xFFECF8F0),
+                              borderRadius: BorderRadius.circular(10)),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                height: 6,
+                                width: 6,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xFF309C86),
+                                ),
+                              ),
+                              const SizedBox(width: 4),
+                              const Text(
+                                'Online',
+                                style: TextStyle(
+                                  color: Color(0xFF309C86),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
