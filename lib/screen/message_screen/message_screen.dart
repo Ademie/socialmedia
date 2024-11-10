@@ -143,11 +143,11 @@ class _MessageScreenState extends State<MessageScreen> {
                     // itemCount: model.userList.length,
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
-                      // Conversation conversation = model.userList[index];
+                      Conversation conversation = Conversation();
                       // ChatUser? chatUser = conversation.user;
                       return InkWell(
                         onTap: () {
-                          // model.onUserTap(conversation);
+                          model.onUserTap(conversation);
                         },
                         onLongPress: () {
                           // model.onLongPress(conversation);
