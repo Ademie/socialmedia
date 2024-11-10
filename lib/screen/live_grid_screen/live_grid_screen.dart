@@ -13,6 +13,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../utils/color_res.dart';
 import '../feed_screen/feed_screen.dart';
 import '../live_stream_application_screen/live_stream_application_screen.dart';
+import 'canceled_list.dart';
 
 class LiveGridScreen extends StatefulWidget {
   const LiveGridScreen({Key? key}) : super(key: key);
@@ -120,7 +121,15 @@ class _LiveGridScreenState extends State<LiveGridScreen> {
               shrinkWrap: true,
               padding: const EdgeInsets.only(left: 16),
               itemBuilder: (context, index) {
-                return ItemList(items: items[index]);
+                return InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return const CanceledList();
+                        },
+                      ));
+                    },
+                    child: ItemList(items: items[index]));
               },
             ),
           ]),
