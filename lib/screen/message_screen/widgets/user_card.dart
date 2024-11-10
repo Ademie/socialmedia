@@ -34,13 +34,18 @@ class UserCard extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.only(bottom: 6),
-          padding: const EdgeInsets.only(top: 8, left: 12, right: 12, bottom: 11),
+          padding: const EdgeInsets.only(top: 8, right: 12, bottom: 11),
           height: 74,
           width: Get.width,
           decoration: BoxDecoration(
-            color: ColorRes.lightGrey2,
-            borderRadius: BorderRadius.circular(10),
-          ),
+              // color: ColorRes.lightGrey2,
+              borderRadius: BorderRadius.circular(10),
+              border: const Border(
+                bottom: BorderSide(
+                  color: ColorRes.lightGrey2,
+                  width: 1,
+                ),
+              )),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -53,7 +58,8 @@ class UserCard extends StatelessWidget {
                   fit: BoxFit.cover,
                   cacheKey: '$image',
                   errorWidget: (context, url, error) {
-                    return CommonUI.profileImagePlaceHolder(name: name, heightWidth: 53);
+                    return CommonUI.profileImagePlaceHolder(
+                        name: name, heightWidth: 53);
                   },
                 ),
               ),
@@ -77,21 +83,14 @@ class UserCard extends StatelessWidget {
                                     (name ?? '').capitalize ?? '',
                                     softWrap: false,
                                     style: const TextStyle(
-                                        color: ColorRes.darkGrey5,
+                                        color: Color(0xFF17181C),
                                         fontFamily: FontRes.bold,
                                         overflow: TextOverflow.ellipsis,
+                                        fontWeight: FontWeight.w600,
                                         fontSize: 16),
                                   ),
                                 ),
-                                Flexible(
-                                  child: Text(
-                                    ' ${age ?? ''}',
-                                    style: const TextStyle(fontSize: 16),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                                const SizedBox(width: 5),
+                                const SizedBox(width: 8),
                                 Flexible(
                                   child: tickMark == true
                                       ? Image.asset(
@@ -108,11 +107,13 @@ class UserCard extends StatelessWidget {
                             CommonFun.readTimestamp(
                               double.parse(time ?? ''),
                             ),
-                            style: const TextStyle(fontSize: 12, color: ColorRes.grey),
+                            style: const TextStyle(
+                                fontSize: 12, color: ColorRes.grey),
                           ),
                         ],
                       ),
                     ),
+                    const SizedBox(height: 8),
                     Flexible(
                       fit: FlexFit.tight,
                       child: Row(
@@ -123,7 +124,8 @@ class UserCard extends StatelessWidget {
                               '$msg',
                               style: const TextStyle(
                                 fontSize: 14,
-                                color: ColorRes.grey,
+                                color: Color(0xFF17181C),
+                                fontWeight: FontWeight.w500,
                               ),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
@@ -131,23 +133,14 @@ class UserCard extends StatelessWidget {
                           ),
                           const Spacer(),
                           Visibility(
-                            visible: newMsg,
-                            child: Container(
-                              height: 12,
-                              width: 12,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                gradient: newMsg
-                                    ? const LinearGradient(
-                                        colors: [
-                                          ColorRes.darkOrange,
-                                          ColorRes.darkOrange,
-                                        ],
-                                      )
-                                    : null,
-                              ),
-                            ),
-                          ),
+                              visible: newMsg,
+                              child: !newMsg
+                                  ? const SizedBox()
+                                  : const Icon(
+                                      Icons.check,
+                                      size: 18,
+                                      color: Color(0xFF2C7743),
+                                    )),
                         ],
                       ),
                     )

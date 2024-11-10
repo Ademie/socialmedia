@@ -38,9 +38,9 @@ class BottomBar extends StatelessWidget {
             // if (settingAppData?.isDating == 1) iconBox(AssetRes.randoms, S.current.randoms, 18.22, 20.02, 1),
             if (settingAppData?.isSocialMedia != 1)
               iconBox(AssetRes.icFeed, S.current.feed, 17.5, 17.5, 2),
-            iconBox(AssetRes.icLive, S.current.live, 16.8, 18, 3),
-            iconBox(AssetRes.message, S.current.message, 16.8, 18, 3),
-            iconBox(AssetRes.profile, S.current.profile, 18, 17, 4),
+            iconBox(AssetRes.icLive, S.current.live, 16, 18, 3),
+            iconBox(AssetRes.message, S.current.message, 16.8, 18, 4),
+            iconBox(AssetRes.profile, S.current.profile, 18, 17, 5),
           ],
         ),
       ),

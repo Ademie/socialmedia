@@ -56,7 +56,8 @@ class DashboardScreenViewModel extends BaseViewModel {
   void initBranch() {
     FlutterBranchSdk.listSession().listen(
       (data) {
-        if (data.containsKey("+clicked_branch_link") && data["+clicked_branch_link"] == true) {
+        if (data.containsKey("+clicked_branch_link") &&
+            data["+clicked_branch_link"] == true) {
           if (data.containsKey('user_id')) {
             Get.to(() => UserDetailScreen(userId: int.parse(data['user_id'])));
           } else if (data.containsKey(Urls.aPostId)) {
@@ -71,7 +72,10 @@ class DashboardScreenViewModel extends BaseViewModel {
                     }
                   },
                   url: Urls.aFetchPostByPostId,
-                  param: {Urls.userId: PrefService.userId, Urls.aPostId: data[Urls.aPostId]});
+                  param: {
+                    Urls.userId: PrefService.userId,
+                    Urls.aPostId: data[Urls.aPostId]
+                  });
             });
           }
         }
