@@ -50,7 +50,10 @@ class ChatTopBarArea extends StatelessWidget {
                     width: 40,
                     fit: BoxFit.cover,
                     errorWidget: (context, url, error) {
-                      return Image.asset('assets/images/new/userdp.png');
+                      return Image.asset(
+                        'assets/images/new/userdp.png',
+                        fit: BoxFit.fill,
+                      );
                     },
                   ),
                 ),
@@ -65,7 +68,7 @@ class ChatTopBarArea extends StatelessWidget {
                           conversation?.user?.username != null
                               ? '${conversation?.user?.username} '.capitalize ??
                                   'No name'
-                              : ' ',
+                              : ' ttts',
                           style: const TextStyle(
                             color: Color(0xFF17181C),
                             fontWeight: FontWeight.w600,
@@ -129,8 +132,8 @@ class ChatTopBarArea extends StatelessWidget {
                       },
                     ).toList();
                   },
-                  child: Image.asset(
-                    AssetRes.moreHorizontal,
+                  child: SvgPicture.asset(
+                    'assets/icons/new/more.svg',
                     height: 27,
                     width: 27,
                   ),
